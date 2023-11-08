@@ -24,7 +24,7 @@ public class login extends base {
 	@FindBy(xpath = "//a[@title = 'Login']")
 	WebElement title;
 
-	@FindBy(xpath = "//*[@id=\"body\"]/div/div/div[1]/div[1]/a[4]/span[2]")
+	@FindBy(xpath = "//*[@id=\"body\"]/div/div/div[2]/div[1]/a[4]/span[2]")
 	WebElement emailbutton;
 
 	@FindBy(xpath = "//input[@name = 'username']")
@@ -36,10 +36,11 @@ public class login extends base {
 	@FindBy(xpath = "//input[@name = 'btn_submit']")
 	WebElement submit;
 
-	@FindBy(xpath = "//*[@id=\"header\"]/div/figure/a/img")
+	//@FindBy(xpath = "//*[@id=\"header\"]/div/figure/a/img")
+	@FindBy(xpath = "//img[@alt='YoYumm']")
 	WebElement logo;
 	
-	@FindBy(xpath = "//*[@id=\"header\"]/div/div/nav[3]/ul/li[1]/a[1]")
+	@FindBy(xpath = "//*[@id=\"HDR-USER\"]/div/span[2]/a[1]")
 	WebElement login;
 	
 
@@ -49,20 +50,22 @@ public class login extends base {
 	}
 
 	public boolean logo() {
-		return logo.isDisplayed();
+		String logo1 = logo.getAttribute("src");
+		
+		return logo1.isBlank();
 	}
 	
 	
 	
-	public void login(String un, String pass) throws InterruptedException {
-	driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+	public void login(String un, String pass) {
+	//driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		
 		login.click();
 		emailbutton.click();
-		//username.click();
 		username.sendKeys(un);
 		password.sendKeys(pass);
 		submit.click();
+		driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS)		;
 		}
 		
 

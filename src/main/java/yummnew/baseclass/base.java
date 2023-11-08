@@ -16,7 +16,7 @@ public class base {
 	
 	static public Properties prop;
 	public WebDriver driver;
-	String browser = "edge";
+	String browser = "chrome";
 	
 	public void getproperty() throws IOException {
 		
@@ -48,6 +48,8 @@ public class base {
 
 		
 	}
+	
+	
    
 
 }

@@ -8,7 +8,9 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import yummnew.baseclass.base;
+import yummnew.pages.location;
 import yummnew.pages.login;
+import yummnew.pages.restaurantdetail;
 
 public class logintestcase extends base{
 	
@@ -38,7 +40,8 @@ public class logintestcase extends base{
 	@Test(priority = 2)
 	public void logotest() {
 	boolean flag =	log.logo();
-	Assert.assertTrue(flag);
+	//Assert.assertTrue(flag);
+	Assert.assertFalse(flag);
 	}
 	
 	@Parameters("un, pass")
@@ -46,6 +49,18 @@ public class logintestcase extends base{
 	public void logincheck() throws InterruptedException {
 		//log.login(prop.getProperty("username"), prop.getProperty("password"));
 		log.login("kamal@dummyid.com", "k1234567");
+	}
+	@Test(priority = 4)
+	public void address() throws InterruptedException{
+		location lc = new location(driver);
+		lc.getlocation();
+	}
+	
+	@Test(priority = 5 )
+	public void rest() throws InterruptedException {
+	
+		restaurantdetail rd = new restaurantdetail(driver);
+		rd.restaurantsearch();
 	}
 	
 	
